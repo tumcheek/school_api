@@ -25,12 +25,9 @@ def fill_students_table(first_names, last_names, student_number, group_number, e
             session.commit()
 
 
-# ******************************************************************************
 def fill_association_table(students, courses, engine):
     with Session(engine) as session:
         for student in students:
-            # user=session.scalars(student).one()
             student.course_id.append(choice(courses))
-
             session.commit()
-# ******************************************************************************
+
