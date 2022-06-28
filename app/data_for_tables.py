@@ -10,7 +10,8 @@ last_names = ['Abbott', 'Acevedo', 'Acosta', 'Adams', 'Adkins', 'Aguilar', 'Blac
               'Blake', 'Blanchard', 'Blankenship', 'Blevins',  'Fox', 'Francis', 'Franco', 'Frank', 'Franklin',
               'Franks']
 
-courses = ['math', 'biology', 'english', 'chemistry', 'football', 'basketball', 'astronomy', 'geometry', 'algebra']
+courses = ['math', 'biology', 'english', 'chemistry', 'football', 'basketball', 'astronomy', 'geometry', 'algebra',
+           'physics']
 
 
 def create_random_groups(number=10):
