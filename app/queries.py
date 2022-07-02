@@ -1,4 +1,4 @@
-from sqlalchemy import select, func, insert
+from sqlalchemy import select, func
 from sqlalchemy.orm import Session
 from db import engine
 from models import GroupModel, StudentModel, CourseModel, association_table
@@ -39,10 +39,28 @@ def add_students(student_first_name, student_last_name, student_group, course_na
     session.commit()
 
 
-# def delete_student(student_id):
-#     session.query(association_table).filter_by(students_id=student_id).delete()
-#     session.query(StudentModel).filter_by(id=student_id).delete()
-#
-# delete_student(1)
+def delete_student(student_id):
+    student = session.query(StudentModel).filter(StudentModel.id == student_id).first()
+    all_student_courses = session.query(association_table).filter(association_table.c.students_id == student_id).all()
+    for student_id, courses_id in all_student_courses:
+        course = session.query(CourseModel).filter(CourseModel.id == courses_id).first()
+        student.course_id.remove(course)
+    session.query(StudentModel).filter(StudentModel.id == student_id).delete()
+    session.commit()
 
 
+def add_students_to_course(student_id, courses_names):
+    student = session.scalars(select(StudentModel).where(StudentModel.id == student_id)).one()
+    for course_name in courses_names:
+        course = session.execute(select(CourseModel).where(CourseModel.name == course_name)).all()[0][0]
+        student.course_id.append(course)
+        session.add(student)
+        session.commit()
+
+
+def remove_student_from_course(student_id, course_name):
+    student = session.scalars(select(StudentModel).where(StudentModel.id == student_id)).one()
+    course = session.execute(select(CourseModel).where(CourseModel.name == course_name)).all()[0][0]
+    student.course_id.remove(course)
+    session.add(student)
+    session.commit()
