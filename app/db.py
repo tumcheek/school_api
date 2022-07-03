@@ -7,7 +7,7 @@ from data_for_tables import *
 
 
 engine = create_engine(f"postgresql://{db_config['postgresql']['user']}:{db_config['postgresql']['pass']}@"
-                       f"{db_config['postgresql']['host']}/test_1")
+                       f"{db_config['postgresql']['host']}/test_3")
 
 
 if __name__ == '__main__':
