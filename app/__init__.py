@@ -4,6 +4,5 @@ from .queries import *
 from .models import *
 from .data_for_tables import *
 from .config import *
-from .create_db import *
 from .create_tables_date import *
 from .db import *

@@ -10,7 +10,7 @@ connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 cursor = connection.cursor()
 
 # Creating a database
-cursor.execute('create database test_3')
+cursor.execute(f'create database {db_config["database_name"]}')
 
 # Close connection
 cursor.close()

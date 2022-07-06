@@ -1,9 +1,13 @@
+from pathlib import Path
+import sys
+ROOT = Path().resolve().parent
+sys.path.append(str(ROOT / 'app'))
 from flask import Flask, request, Response
 from flask_restful import Resource, Api
 from sqlalchemy import select, func
-from queries import add_students, delete_student , find_students_by_course, add_students_to_course,\
+from queries import add_students, delete_student, find_students_by_course, add_students_to_course,\
     remove_student_from_course, session
-from models import GroupModel, StudentModel, CourseModel, association_table
+from models import GroupModel, StudentModel, CourseModel
 from dicttoxml import dicttoxml
 import json
 from create_dict import create_groups_dict, create_group_dict, create_students_dict, create_courses_dict
