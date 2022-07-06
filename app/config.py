@@ -3,6 +3,6 @@ db_config = {
         'host': 'localhost',
         'user': 'postgres',
         'pass': '1111',
-        'database_name': ''
+        'database_name': 'test_3'
     }
 }
