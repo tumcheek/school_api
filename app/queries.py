@@ -36,13 +36,6 @@ def add_students(student_first_name, student_last_name, student_group):
     session.add(student)
     session.commit()
 
-# def add_students(student_first_name, student_last_name, student_group, course_name):
-#     course = session.execute(select(CourseModel).where(CourseModel.name == course_name)).one()[0]
-#     student = StudentModel(first_name=student_first_name, last_name=student_last_name, group_id=student_group)
-#     student.course_id.append(course)
-#     session.add(student)
-#     session.commit()
-
 
 def delete_student(student_id):
     student = session.query(StudentModel).filter(StudentModel.id == student_id).first()
